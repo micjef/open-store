@@ -1,16 +1,17 @@
 import React from 'react'
 import Head from 'next/head'
-import { AppBar, Toolbar, Typography, Container, Link } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, Container, Link, createTheme, ThemeProvider, CssBaseLine } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import NextLink from 'next/link'
 
-const Layout = ({children}) => {
+const Layout = ({ children, title, description }) => {
   const styles = useStyles()
 
   return (
     <div>
       <Head>
-        <title>Open Store</title>
+        <title>{title ? `${title} - Open Store` : 'Open Store'}</title>
+        {description && <meta name="description" content={description}></meta>}
       </Head>
       <AppBar position="static" className={styles.navbar}>
         <Toolbar>
